@@ -1,14 +1,8 @@
 <template>
-  <input
-    v-model="inputVal"
-    class="input"
-    placeholder="Please input a phone number"
-    @input="emits('update:modelValue', inputVal)" />
-  <span
-    v-show="status.length"
-    class="status">
-    {{ status }}
-  </span>
+  <input v-model="inputVal" class="input" placeholder="Please input a phone number" 
+  @input="emits('update:modelValue', inputVal)" />
+  <span v-show="status.length" class="status"> {{ status }} </span>
+  <button class="clear-btn" v-show="inputVal" @click="clear()">Clear</button>
 </template>
 
 <script setup lang="ts">
@@ -18,6 +12,11 @@ const props = defineProps<{ modelValue: string }>()
 const emits = defineEmits(['update:modelValue'])
 const inputVal = ref('')
 const status = ref('')
+
+function clear(){
+  inputVal.value = ''
+  emits('update:modelValue', inputVal)
+}
 
 watch(
   () => props.modelValue,

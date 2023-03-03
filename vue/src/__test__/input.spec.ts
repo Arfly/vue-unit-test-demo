@@ -58,3 +58,15 @@ test('Test Input number length', async () => {
   await inputEle.setValue('13456789011')
   expect(statusEle.isVisible()).toBeFalsy()
 })
+
+test('Test clear btn', async () => {
+  const clearBtn = wrapper.find('.clear-btn')
+  await inputEle.setValue('')
+  expect(clearBtn.isVisible()).toBeFalsy()
+
+  await inputEle.setValue('test')
+  expect(clearBtn.isVisible()).toBeTruthy()
+
+  await clearBtn.trigger('click')
+  expect(wrapper.props('modelValue')).toBe('')
+})
