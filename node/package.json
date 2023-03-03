@@ -1,0 +1,9 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "npx nodemon ./test.js"
+  }
+}
